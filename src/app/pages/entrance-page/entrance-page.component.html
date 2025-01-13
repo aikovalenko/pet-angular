@@ -1,0 +1,17 @@
+<a routerLink="movie">Movie</a>
+<app-search></app-search>
+<h3>Trending</h3>
+@for (trendingItem of trendingList; track trendingItem.id) {
+  <div>
+<!--    тут нужен резолвер по типу медии-->
+    {{ trendingItem.media_type }},
+    @if (trendingItem.title) {
+      <span >{{ trendingItem.title }}</span>
+    }
+    @if (trendingItem.name) {
+      <span >{{ trendingItem.name }}</span>
+    }
+  </div>
+}
+
+

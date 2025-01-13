@@ -1,0 +1,11 @@
+<h3>Popular</h3>
+@for (popularItem of popularList; track popularItem.id) {
+  <a [routerLink]="[popularItem.id]">
+    {{ popularItem.title }}
+  </a>
+}
+
+<h3>Upcoming</h3>
+@for (upcomingItem of upcomingList; track upcomingItem.id) {
+  <a [routerLink]="[upcomingItem.id]">{{ upcomingItem.title }}</a>
+}
