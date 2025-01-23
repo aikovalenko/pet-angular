@@ -11,14 +11,14 @@
     <p>Loading...</p>
   } @else {
     <app-media-list
-      [mediaItemList]="context.results"
+      [mediaItemList]="context?.results"
       [mediaType]="'movie'"
     ></app-media-list>
     <br />
     <app-media-pagination
-      [currentPage]="context.page"
-      [totalPages]="context.total_pages"
-      (currentPageChange)="ctrl.load($event)"
+      [currentPage]="context?.page"
+      [totalPages]="context?.total_pages"
+      (currentPageChange)="ctrl?.load($event)"
     ></app-media-pagination>
   }
 </ng-container>
@@ -36,14 +36,14 @@
     <p>Loading...</p>
   } @else {
     <app-media-list
-      [mediaItemList]="context.results"
+      [mediaItemList]="context?.results"
       [mediaType]="'movie'"
     ></app-media-list>
     <br />
     <app-media-pagination
-      [currentPage]="context.page"
-      [totalPages]="context.total_pages"
-      (currentPageChange)="ctrl.load($event)"
+      [currentPage]="context?.page"
+      [totalPages]="context?.total_pages"
+      (currentPageChange)="ctrl?.load($event)"
     ></app-media-pagination>
   }
 </ng-container>
