@@ -17,12 +17,12 @@
   @if (loading) {
     <p>Loading...</p>
   } @else {
-    <app-media-list [mediaItemList]="context.results"></app-media-list>
+    <app-media-list [mediaItemList]="context?.results"></app-media-list>
     <br />
     <app-media-pagination
-      [currentPage]="context.page"
-      [totalPages]="context.total_pages"
-      (currentPageChange)="ctrl.load($event)"
+      [currentPage]="context?.page"
+      [totalPages]="context?.total_pages"
+      (currentPageChange)="ctrl?.load($event)"
     ></app-media-pagination>
   }
 </ng-container>
