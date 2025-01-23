@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.card {
+  display: grid;
+  place-content: space-between;
+  width: 100px;
+  aspect-ratio: 0.7;
+  border: 1px solid black;
+}
+
+.card__type {
+  grid-area: 1 / 1;
+}
+
+.card__title {
+  grid-area: 2 / 1;
+}

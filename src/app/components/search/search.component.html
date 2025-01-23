@@ -1,18 +1,16 @@
 <h3>Live search</h3>
-<input
-  type="text"
-  [formControl]="searchControl"
-/>
-{{isLoading}}
-@for (result of results; track result.id) {
-  <a [routerLink]="[result.media_type, result.id]">
-    <!--    тут нужен резолвер по типу медии-->
-    {{ result.media_type }},
-    @if (result.title) {
-      <span>{{ result.title }}</span>
-    }
-    @if (result.name) {
-      <span>{{ result.name }}</span>
-    }
-  </a>
+<div>
+  <input type="text" [formControl]="searchControl" />
+
+  @if (isLoading) {
+    Loading...
+  }
+</div>
+@if (data?.results?.length) {
+  <app-media-list [mediaItemList]="data?.results"></app-media-list>
+  <app-media-pagination
+    [currentPage]="data?.page"
+    [totalPages]="data?.total_pages"
+    (currentPageChange)="changePage($event)"
+  ></app-media-pagination>
 }

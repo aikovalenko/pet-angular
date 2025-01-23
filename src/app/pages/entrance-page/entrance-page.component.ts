@@ -1,26 +1,21 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {MediaItem, ApiService} from '../../services/api.service';
-import {RouterLink} from '@angular/router';
-import {SearchComponent} from '../../components/search/search.component';
-
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { SearchComponent } from '../../components/search/search.component';
+import { MediaListComponent } from '../../components/media-list/media-list.component';
+import { LoadDataDirective } from '../../directives/load-data.directive';
+import { MediaPaginationComponent } from '../../components/media-pagination/media-pagination.component';
 
 @Component({
   selector: 'app-entrance-page',
   imports: [
     RouterLink,
-    SearchComponent
+    SearchComponent,
+    MediaListComponent,
+    LoadDataDirective,
+    MediaPaginationComponent,
   ],
   templateUrl: './entrance-page.component.html',
-  styleUrl: './entrance-page.component.scss'
+  styleUrl: './entrance-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EntrancePageComponent implements OnInit {
-  private ApiService = inject(ApiService);
-
-  public trendingList: MediaItem[] = [];
-
-  public ngOnInit(): void {
-    this.ApiService.getTrending().subscribe((response) => {
-      this.trendingList = response.results;
-    });
-  }
-}
+export class EntrancePageComponent {}

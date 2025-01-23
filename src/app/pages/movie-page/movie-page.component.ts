@@ -1,27 +1,13 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {MediaItem, ApiService} from '../../services/api.service';
-import {RouterLink} from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { LoadDataDirective } from '../../directives/load-data.directive';
+import { MediaListComponent } from '../../components/media-list/media-list.component';
+import { MediaPaginationComponent } from '../../components/media-pagination/media-pagination.component';
 
 @Component({
   selector: 'app-movie-page',
-  imports: [
-    RouterLink
-  ],
+  imports: [LoadDataDirective, MediaListComponent, MediaPaginationComponent],
   templateUrl: './movie-page.component.html',
-  styleUrl: './movie-page.component.scss'
+  styleUrl: './movie-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MoviePageComponent implements OnInit{
-  private ApiService = inject(ApiService);
-
-  public popularList: MediaItem[] = [];
-  public upcomingList: MediaItem[] = [];
-
-  public ngOnInit(): void {
-    this.ApiService.getPopular().subscribe((response) => {
-      this.popularList = response.results;
-    });
-    this.ApiService.getUpcoming().subscribe((response) => {
-      this.upcomingList = response.results;
-    });
-  }
-}
+export class MoviePageComponent {}

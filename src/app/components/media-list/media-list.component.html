@@ -1,0 +1,18 @@
+@if (mediaItemList) {
+  @for (mediaItem of mediaItemList; track mediaItem.id) {
+    <a
+      class="card card--{{ mediaItem.media_type || mediaType }}"
+      [routerLink]="['/', mediaItem.media_type || mediaType, mediaItem.id]"
+    >
+      @if (mediaItem.media_type) {
+        <span class="card__type">{{ mediaItem.media_type }}</span>
+      }
+      @if (mediaItem.title) {
+        <span class="card__title">{{ mediaItem.title }}</span>
+      }
+      @if (mediaItem.name) {
+        <span class="card__title">{{ mediaItem.name }}</span>
+      }
+    </a>
+  }
+}

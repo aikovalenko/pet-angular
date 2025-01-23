@@ -1,17 +1,28 @@
-<a routerLink="movie">Movie</a>
+<div>
+  <a routerLink="movie">Movie</a> - <a routerLink="tv">TV</a> -
+  <a routerLink="person">Person</a>
+</div>
+
 <app-search></app-search>
+
 <h3>Trending</h3>
-@for (trendingItem of trendingList; track trendingItem.id) {
-  <div>
-<!--    тут нужен резолвер по типу медии-->
-    {{ trendingItem.media_type }},
-    @if (trendingItem.title) {
-      <span >{{ trendingItem.title }}</span>
-    }
-    @if (trendingItem.name) {
-      <span >{{ trendingItem.name }}</span>
-    }
-  </div>
-}
-
-
+<ng-container
+  *appLoadData="
+    let context;
+    let ctrl = controller;
+    let loading = loading;
+    params: { method: 'getTrending' }
+  "
+>
+  @if (loading) {
+    <p>Loading...</p>
+  } @else {
+    <app-media-list [mediaItemList]="context.results"></app-media-list>
+    <br />
+    <app-media-pagination
+      [currentPage]="context.page"
+      [totalPages]="context.total_pages"
+      (currentPageChange)="ctrl.load($event)"
+    ></app-media-pagination>
+  }
+</ng-container>

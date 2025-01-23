@@ -1,0 +1,15 @@
+@if (currentPage && totalPages) {
+  <button
+    (click)="currentPageChange.emit(currentPage - 1)"
+    [disabled]="currentPage === 1"
+  >
+    Prev
+  </button>
+  {{ currentPage }} / {{ totalPages }}
+  <button
+    (click)="currentPageChange.emit(currentPage + 1)"
+    [disabled]="currentPage === totalPages"
+  >
+    Next
+  </button>
+}
